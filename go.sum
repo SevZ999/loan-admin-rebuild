@@ -420,8 +420,8 @@ github.com/shopspring/decimal v1.4.0 h1:bxl37RwXBklmTi0C79JfXCEBD1cqqHt0bbgBAGFp
 github.com/shopspring/decimal v1.4.0/go.mod h1:gawqmDU56v4yIKSwfBSFip1HdCCXN8/+DMd9qYNcwME=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
 github.com/sirupsen/logrus v1.4.2/go.mod h1:tLMulIdttU9McNUspp0xgXVQah82FyeX6MwdIuYE2rE=
-github.com/small-ek/antgo v1.8.6 h1:fO1VXt2otHBzBAJDWwFfFMX+9SA5JmBT46Tjk4ZP0DA=
-github.com/small-ek/antgo v1.8.6/go.mod h1:YtOkJn2+XurplSVqwI9o3AotLEqX8YUj7xzef9KrxoM=
+github.com/small-ek/antgo v1.8.7 h1:fbvl3mpm2vMcgSC6SlSyNVypv+fAIlxQ8nEUYY6BhIs=
+github.com/small-ek/antgo v1.8.7/go.mod h1:U0oF4vxEVeNXKhDoHBGYQyM2E98Cqf8Bi4qHbGRLkxs=
 github.com/sourcegraph/conc v0.3.0 h1:OQTbbt6P72L20UqAkXXuLOj79LfEanQ+YQFNpLA9ySo=
 github.com/sourcegraph/conc v0.3.0/go.mod h1:Sdozi7LEKbFPqYX2/J+iBAM6HpqSLTASQIKqDmF7Mt0=
 github.com/spf13/afero v1.11.0 h1:WJQKhtpdm3v2IzqG8VMqrr6Rf3UYpEF239Jy9wNepM8=
