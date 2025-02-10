@@ -1,0 +1,959 @@
+basePath: /api
+definitions:
+  loan_amount.LoanInfo:
+    properties:
+      annual_income:
+        description: 年收入（单位：元）
+        type: number
+      businessValue:
+        description: 企业价值（单位：元）
+        type: number
+      carValue:
+        description: 车辆价值（单位：元）
+        type: number
+      credit_status:
+        description: 信用情况：优秀、不良
+        type: string
+      debt:
+        description: 总负债（单位：元）
+        type: number
+      houseValue:
+        description: 房产价值（单位：元）
+        type: number
+    type: object
+  models.LoanSupermarketProducts:
+    properties:
+      annual_interest_rate:
+        description: 年利率（百分比）
+        type: number
+      created_at:
+        description: 创建时间
+        type: string
+      description:
+        description: 描述
+        type: string
+      display_time_range:
+        description: 显示时间段（时）
+        type: string
+      fund_provider:
+        description: 资金方
+        type: string
+      id:
+        description: 标识
+        type: integer
+      is_alipay:
+        description: 是否为支付宝
+        type: integer
+      loan_term:
+        description: 贷款期限
+        type: string
+      max_loan_amount:
+        description: 最高可借，单位为万元
+        type: integer
+      product_image:
+        description: 产品图片
+        type: string
+      product_name:
+        description: 产品名称
+        type: string
+      redirect_url:
+        description: 跳转链接
+        type: string
+      status:
+        description: 状态:1=禁用;2=启用
+        type: integer
+      tag_type:
+        description: 标签类型:1=挂牌机构;2=高通过率
+        type: integer
+      type:
+        description: 类型:1=跳转链接;2=下载链接
+        type: integer
+      unit_price:
+        description: 单价
+        type: number
+      updated_at:
+        description: 更新时间
+        type: string
+    type: object
+  models.SysAppUpdate:
+    properties:
+      created_at:
+        description: 创建时间
+        type: string
+      describe:
+        description: 版本更新内容
+        type: string
+      edition_force:
+        description: 是否强制更新:0=否;1=是
+        type: integer
+      edition_issue:
+        description: 是否发行:0=否;1=是
+        type: integer
+      edition_name:
+        description: 后端返回的版本名称
+        type: string
+      edition_number:
+        description: 版本号manifest里的版本号
+        type: integer
+      edition_silence:
+        description: 是否静默更新:0=否;1=是
+        type: integer
+      edition_url:
+        description: 安装包下载地址或者通用应用市场地址
+        type: string
+      id:
+        description: 标识
+        type: integer
+      package_type:
+        description: 0=整包升级;1=wgt升级
+        type: integer
+      updated_at:
+        description: 更新时间
+        type: string
+      version_type:
+        description: 设备类型;'android','ios'
+        type: string
+    type: object
+  models.SysGeo:
+    properties:
+      deep:
+        description: 深度
+        type: integer
+      ext_id:
+        description: 编码
+        type: integer
+      ext_name:
+        description: 全称
+        type: string
+      id:
+        description: 编码
+        type: integer
+      name:
+        description: 名称
+        type: string
+      pid:
+        description: 上级编码
+        type: integer
+      pinyin:
+        description: 拼音
+        type: string
+      pinyin_prefix:
+        description: 拼音首字母
+        type: string
+    type: object
+  models.SysHelp:
+    properties:
+      created_at:
+        description: 创建时间
+        type: string
+      describe:
+        description: 描述
+        type: string
+      id:
+        description: 标识
+        type: integer
+      title:
+        description: 标题
+        type: string
+      type:
+        description: 类型:1=常见问题;2=借款相关;3=防骗指南;4=账户相关;5=其他问题
+        type: integer
+      updated_at:
+        description: 修改时间
+        type: string
+    type: object
+  request.FeedbackRequestForm:
+    properties:
+      created_at:
+        description: 反馈时间
+        type: string
+      description:
+        description: 问题描述
+        type: string
+      id:
+        description: 标识
+        type: integer
+      image_url:
+        description: 上传图片路径
+        items:
+          type: integer
+        type: array
+      updated_at:
+        description: 更新时间
+        type: string
+      user_id:
+        description: 用户标识
+        type: integer
+    required:
+    - description
+    - user_id
+    type: object
+  request.UserInfoRequestCardForm:
+    properties:
+      buy_car_type:
+        description: 购房方式:1=全款;2=按揭
+        type: integer
+      credit_status:
+        description: 信用情况
+        type: string
+      funding_gap:
+        description: 资金缺口/借款额度
+        type: string
+      geo_id:
+        description: 常驻城市标识
+        type: integer
+      license_plate_number:
+        description: 车牌号
+        type: string
+      name:
+        description: 姓名
+        type: string
+      phone:
+        description: 手机号
+        type: string
+      type:
+        description: 类型:1=信用贷;2=车贷;3=企业贷;4=房产贷
+        type: integer
+      user_id:
+        description: 用户标识
+        type: integer
+    required:
+    - buy_car_type
+    - credit_status
+    - funding_gap
+    - geo_id
+    - license_plate_number
+    - name
+    - phone
+    - user_id
+    type: object
+  request.UserInfoRequestCompanyForm:
+    properties:
+      buy_car_type:
+        description: 购房方式:1=全款;2=按揭
+        type: integer
+      credit_status:
+        description: 信用情况
+        type: string
+      funding_gap:
+        description: 资金缺口/借款额度
+        type: string
+      geo_id:
+        description: 常驻城市标识
+        type: integer
+      license_plate_number:
+        description: 车牌号
+        type: string
+      name:
+        description: 姓名
+        type: string
+      phone:
+        description: 手机号
+        type: string
+      type:
+        description: 类型:1=信用贷;2=车贷;3=企业贷;4=房产贷
+        type: integer
+      user_id:
+        description: 用户标识
+        type: integer
+    required:
+    - buy_car_type
+    - credit_status
+    - funding_gap
+    - geo_id
+    - license_plate_number
+    - name
+    - phone
+    - user_id
+    type: object
+  request.UserInfoRequestForm:
+    properties:
+      age:
+        description: 年龄
+        type: integer
+      annual_income:
+        description: 年收入（万）
+        type: number
+      app_id:
+        description: APP标识
+        type: integer
+      business_type:
+        description: 企业性质
+        type: string
+      buy_car_type:
+        description: 购房方式:1=全款;2=按揭
+        type: integer
+      channel_id:
+        description: 渠道标识
+        type: integer
+      company_name:
+        description: 公司名称/企业名称
+        type: string
+      created_at:
+        description: 创建时间
+        type: string
+      credit_status:
+        description: 信用情况
+        type: string
+      debt_amount:
+        description: 负债金额（万）
+        type: number
+      funding_gap:
+        description: 资金缺口/借款额度
+        type: string
+      geo_id:
+        description: 常驻城市标识
+        type: integer
+      has_car:
+        description: 是否有车
+        type: integer
+      has_house:
+        description: 是否有房产
+        type: integer
+      has_housing_fund:
+        description: 是否有公积金
+        type: integer
+      has_social_security:
+        description: 是否有社保
+        type: integer
+      house_address:
+        description: 房产位置
+        type: string
+      house_type:
+        description: 房产类型
+        type: string
+      id:
+        description: 主键ID
+        type: integer
+      id_card:
+        description: 身份证
+        type: string
+      is_employee:
+        description: 是否为上班族
+        type: integer
+      license_number:
+        description: 是否有营业执照
+        type: integer
+      license_plate_number:
+        description: 车牌号
+        type: string
+      name:
+        description: 姓名
+        type: string
+      occupation:
+        description: 职业
+        type: string
+      operation_years:
+        description: 企业经营年限
+        type: string
+      phone:
+        description: 手机号
+        type: string
+      policy_duration:
+        description: 保单年限
+        type: integer
+      registered_capital:
+        description: 企业注册资金(万)
+        type: integer
+      salary_payment_status:
+        description: 工资发放情况
+        type: string
+      sesame_score:
+        description: 支付宝芝麻分
+        type: string
+      type:
+        description: 类型:1=信用贷;2=车贷;3=企业贷;4=房产贷
+        type: integer
+      updated_at:
+        description: 更新时间
+        type: string
+      user_id:
+        description: 用户标识
+        type: integer
+      wechat_id:
+        description: 微信号
+        type: string
+    required:
+    - credit_status
+    - funding_gap
+    - id_card
+    - name
+    - sesame_score
+    - user_id
+    type: object
+  request.UserInfoRequestHouseForm:
+    properties:
+      buy_car_type:
+        description: 购房方式:1=全款;2=按揭
+        type: integer
+      credit_status:
+        description: 信用情况
+        type: string
+      funding_gap:
+        description: 资金缺口/借款额度
+        type: string
+      geo_id:
+        description: 常驻城市标识
+        type: integer
+      license_plate_number:
+        description: 车牌号
+        type: string
+      name:
+        description: 姓名
+        type: string
+      phone:
+        description: 手机号
+        type: string
+      type:
+        description: 类型:1=信用贷;2=车贷;3=企业贷;4=房产贷
+        type: integer
+      user_id:
+        description: 用户标识
+        type: integer
+    required:
+    - buy_car_type
+    - credit_status
+    - funding_gap
+    - geo_id
+    - license_plate_number
+    - name
+    - phone
+    - user_id
+    type: object
+  request.UsersRequestLoginForm:
+    properties:
+      app_id:
+        description: app标识
+        type: integer
+      channel_id:
+        description: app标识
+        type: integer
+      code:
+        description: 验证码
+        type: string
+      device_id:
+        description: 验证码
+        type: string
+      ip:
+        description: ip
+        type: string
+      phone:
+        description: 手机
+        type: string
+    required:
+    - code
+    - phone
+    type: object
+  request.UsersRequestSmsForm:
+    properties:
+      app_id:
+        description: app标识
+        type: integer
+      channel_id:
+        description: app标识
+        type: integer
+      device_id:
+        description: 验证码
+        type: string
+      ip:
+        description: ip
+        type: string
+      phone:
+        description: 手机
+        type: string
+    required:
+    - phone
+    type: object
+  response.Page:
+    properties:
+      items:
+        description: Data set of the current page 数据集合
+      total:
+        description: Total pages 总数量
+        type: integer
+    type: object
+  response.Write:
+    properties:
+      code:
+        description: Status Code 业务逻辑的状态码
+        type: integer
+      data:
+        description: Data 实际数据
+      error:
+        description: Error message 错误相关的信息
+      message:
+        description: Msg Prompt message 简短描述
+        type: string
+    type: object
+host: 127.0.0.1:9001
+info:
+  contact:
+    email: 56494565@qq.com
+    name: antgo
+    url: https://github.com/small-ek/antgo
+  description: loan project
+  title: Swagger loan API
+  version: "1.0"
+paths:
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UsersRequestLoginForm'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 用户登录
+      tags:
+      - Auth授权
+  /auth/send-sms:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UsersRequestSmsForm'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 发送短信
+      tags:
+      - Auth授权
+  /calculate/amount:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/loan_amount.LoanInfo'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 额度测试
+      tags:
+      - 计算
+  /calculate/pressure:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/loan_amount.LoanInfo'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 还款压力测试
+      tags:
+      - 计算
+  /feedback:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 创建参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.FeedbackRequestForm'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 提交问题反馈
+      tags:
+      - 问题反馈表
+  /loan-supermarket-products:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 当前页
+        in: query
+        name: current_page
+        type: integer
+      - collectionFormat: csv
+        description: 排序方式 true 降序 false 升序
+        in: query
+        items:
+          type: boolean
+        name: desc
+        type: array
+      - description: 复杂过滤条件,适用于复杂查询
+        in: query
+        name: filter
+        type: string
+      - description: 忽略字段
+        in: query
+        name: omit
+        type: string
+      - collectionFormat: csv
+        description: 排序字段
+        in: query
+        items:
+          type: string
+        name: order
+        type: array
+      - description: 每页显示数量
+        in: query
+        name: page_size
+        type: integer
+      - description: JSON格式的过滤字段
+        example: '"{\"key1\":\"value1\",\"key2\": 1}"'
+        in: query
+        name: filter_map
+        type: string
+      - description: 其他参数
+        example: '"{\"key1\":\"value1\",\"key2\": 1}"'
+        in: query
+        name: extra
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Write'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      items:
+                        items:
+                          $ref: '#/definitions/models.LoanSupermarketProducts'
+                        type: array
+                    type: object
+              type: object
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 获取贷超产品管理表分页数据
+      tags:
+      - 贷超产品管理表
+  /sys-app-update:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Write'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.SysAppUpdate'
+              type: object
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 获取app更新详情数据
+      tags:
+      - app更新
+  /sys-geo:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 当前页
+        in: query
+        name: current_page
+        type: integer
+      - collectionFormat: csv
+        description: 排序方式 true 降序 false 升序
+        in: query
+        items:
+          type: boolean
+        name: desc
+        type: array
+      - description: 复杂过滤条件,适用于复杂查询
+        in: query
+        name: filter
+        type: string
+      - description: 忽略字段
+        in: query
+        name: omit
+        type: string
+      - collectionFormat: csv
+        description: 排序字段
+        in: query
+        items:
+          type: string
+        name: order
+        type: array
+      - description: 每页显示数量
+        in: query
+        name: page_size
+        type: integer
+      - description: JSON格式的过滤字段
+        example: '"{\"key1\":\"value1\",\"key2\": 1}"'
+        in: query
+        name: filter_map
+        type: string
+      - description: 其他参数
+        example: '"{\"key1\":\"value1\",\"key2\": 1}"'
+        in: query
+        name: extra
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Write'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      items:
+                        items:
+                          $ref: '#/definitions/models.SysGeo'
+                        type: array
+                    type: object
+              type: object
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 获取地理信息分页数据
+      tags:
+      - 地理信息
+  /sys-help:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 当前页
+        in: query
+        name: current_page
+        type: integer
+      - collectionFormat: csv
+        description: 排序方式 true 降序 false 升序
+        in: query
+        items:
+          type: boolean
+        name: desc
+        type: array
+      - description: 复杂过滤条件,适用于复杂查询
+        in: query
+        name: filter
+        type: string
+      - description: 忽略字段
+        in: query
+        name: omit
+        type: string
+      - collectionFormat: csv
+        description: 排序字段
+        in: query
+        items:
+          type: string
+        name: order
+        type: array
+      - description: 每页显示数量
+        in: query
+        name: page_size
+        type: integer
+      - description: JSON格式的过滤字段
+        example: '"{\"key1\":\"value1\",\"key2\": 1}"'
+        in: query
+        name: filter_map
+        type: string
+      - description: 其他参数
+        example: '"{\"key1\":\"value1\",\"key2\": 1}"'
+        in: query
+        name: extra
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Write'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      items:
+                        items:
+                          $ref: '#/definitions/models.SysHelp'
+                        type: array
+                    type: object
+              type: object
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 获取帮助中心分页数据
+      tags:
+      - 帮助中心
+  /user-info:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 创建参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UserInfoRequestForm'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 信用贷款用户信息表
+      tags:
+      - 贷款用户信息表
+  /user-info/card:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 创建参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UserInfoRequestCardForm'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 车贷用户信息表
+      tags:
+      - 贷款用户信息表
+  /user-info/company:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 创建参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UserInfoRequestCompanyForm'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 企业贷用户信息表
+      tags:
+      - 贷款用户信息表
+  /user-info/house:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 创建参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.UserInfoRequestHouseForm'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+        "1":
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Write'
+      summary: 企业贷用户信息表
+      tags:
+      - 贷款用户信息表
+swagger: "2.0"

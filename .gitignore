@@ -1,0 +1,7 @@
+.idea/
+vendor/
+log/
+loan
+tmp/
+
+resources/ip2region.xdb

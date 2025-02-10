@@ -1,0 +1,32 @@
+[Unit]
+#描述
+Description=Loan APP
+After=network.target
+
+[Service]
+#指定启动服务的命令或可执行文件。
+ExecStart=/usr/local/www/loan/loan-ext
+#指定服务的工作目录
+WorkingDirectory=/usr/local/www/loan-ext/
+#指定服务在崩溃后的重启策略，一般是always、on-failure
+Restart=on-failure
+#重启间隔时间
+RestartSec=5
+User=root
+Group=root
+#自定义环境变量
+#Environment="ENV_VAR_NAME=value"
+ExecReload=/bin/kill -HUP $MAINPID
+#定义 systemd 如何停止服务的子进程。常用值有 control-group, process, mixed。
+KillMode=process
+#在发送信号停止服务后等待的超时时间，单位为秒。
+TimeoutStopSec=30
+#定义标准输出的去向
+StandardOutput=journal
+#定义标准错误输出的去向
+StandardError=journal
+#定义 syslog 中记录的标识符，便于日志过滤
+SyslogIdentifier=loan-ext
+
+[Install]
+WantedBy=multi-user.target
